@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+	<hibernate-configuration>
+	<session-factory>
+	<!-- 数据库连接的核心 -->
+	<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/room</property>
+	<property name="hibernate.connection.username">root</property>
+	<property name="hibernate.connection.password">123</property>
+	<!-- 根据配置的方言生成相应的sql语句 -->
+	<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	<!-- 显示数据库语句 -->
+	<property name="hibernate.show_sql">true</property>
+	<!-- 格式化sql语句 -->
+		<property name="hibernate.format_sql">true</property>
+	<!-- 创建数据表 update:数据库中有数据表就使用原来的数据表，没有就自动创建一个 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+	<!-- 加载映射 -->
+	<mapping resource="com/lky/bean/User.hbm.xml"/>
+	<mapping resource="com/lky/bean/Room.hbm.xml"/>
+	
+	</session-factory>
+	
+	</hibernate-configuration>

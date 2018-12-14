@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop" 
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+							http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd 
+							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">
+	
+	<!-- 将SessionFactory配置到spring容器中 -->
+	<!-- 加载配置方案1:仍然使用外部的hibernate.cfg.xml配置信息 -->
+	<!-- 配置hibernate信息 -->
+	<!-- <bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" >
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" ></property>
+	</bean> -->
+	
+	
+<!-- Spring调用bean执行方法 -->
+<!-- scope="prototype" 多例的 -->
+
+
+<bean id="UserAction" class="com.lky.web.action.UserAction" scope="prototype">
+<!-- 创建对象  name:表示UserAction类中的属性名-->
+<property name="userService" ref="userService1"></property>
+</bean>
+<bean id="RoomAction" class="com.lky.web.action.RoomAction" scope="prototype">
+<!-- 创建对象  name:表示UserAction类中的属性名-->
+<property name="roomService" ref="roomService1"></property>
+</bean>
+<bean id="userService1" class="com.lky.service.UserService" scope="prototype">
+<property name="userDao" ref="UserDao1"></property>
+</bean>
+<bean id="roomService1" class="com.lky.service.RoomService" scope="prototype">
+<property name="roomDao" ref="roomDao1"></property>
+</bean>
+
+<bean id="UserDao1" class="com.lky.dao.UserDao" scope="prototype">
+</bean>
+<bean id="roomDao1" class="com.lky.dao.RoomDao" scope="prototype">
+</bean>
+
+</beans>

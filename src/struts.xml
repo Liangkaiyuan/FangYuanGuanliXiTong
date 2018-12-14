@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!-- 开发模式 -->
+<constant name="struts.devMode" value="true"></constant>
+<!-- <constant name="struts.objectFactory" value="spring"></constant> -->
+<!-- 配置包 -->
+<package name="demo1" extends="struts-default" namespace="/">
+<!-- action方法 -->
+<action name="User_*" class="UserAction" method="{1}">
+<!-- 返回结果跳转页面 -->
+<result name="success">/userlist.jsp</result>
+<!-- 保存 -->
+<result name="save">/a.jsp</result>
+<result name="login">/login_success.jsp</result>
+<result name="adminlogin">/admin/userlist.jsp</result>
+<result name="roomlist_user">/roomlist_user.jsp</result>
+<!-- 错误 -->
+<result name="error">/error.jsp</result>
+</action>
+
+
+
+
+
+<!-- 房间信息跳转 -->
+
+<action name="Room_*" class="RoomAction" method="{1}">
+
+<!-- 返回结果跳转页面 -->
+<result name="list">/roomlist_user.jsp</result>
+<result name="list_index">/roomlist_index.jsp</result>
+<result name="roominsert">/a.jsp</result>
+<result name="adminlist">/admin/roomlist_admin.jsp</result>
+<!-- 保存 -->
+<result name="save">/a.jsp</result>
+<!-- 错误 -->
+<result name="error">/error.jsp</result>
+
+</action>
+
+
+
+
+
+</package>
+
+
+ 
+</struts>
+
+

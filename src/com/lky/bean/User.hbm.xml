@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+  <hibernate-mapping>
+  <class name="com.lky.bean.User" table="user">
+  
+ <id name="id" column="id">
+ <generator class="native"/>
+ </id>
+  <property name="name" column="name"/>
+  <property name="password" column="password"/>
+  <!-- hashset集合的名称    set集合-->
+  <!-- cascade="delete" 连级删除 -->
+   <set name="room" cascade="all">
+   
+   <!-- 主键 -->
+   <key column="user_id"></key>
+   
+   <!-- class:多的一方的类绝对路径 -->
+   <one-to-many class="com.lky.bean.Room" />
+   </set>
+ 
+  </class>
+</hibernate-mapping>
